@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Results</title>
+</head>
+<body>
+    <h1>Prediction Results</h1>
+    <ul>
+        <li>Chicken Consumption (kg): {{ prediction['Chicken Consumption (kg)'] }}</li>
+        <li>Beef Consumption (kg): {{ prediction['Beef Consumption (kg)'] }}</li>
+        <li>Fish Consumption (kg): {{ prediction['Fish Consumption (kg)'] }}</li>
+        <li>Pork Consumption (kg): {{ prediction['Pork Consumption (kg)'] }}</li>
+    </ul>
+
+    {% if img_path %}
+    <h3>Visualization:</h3>
+    <img src="{{ img_path }}" alt="Prediction Chart">
+    {% endif %}
+
+    <br><br>
+    <a href="/">Go Back</a>
+</body>
+</html>

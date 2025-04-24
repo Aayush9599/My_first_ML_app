@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict Poultry Consumption</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="card shadow p-4">
+            <h1 class="text-center text-primary">Predict Poultry Consumption</h1>
+            <form action="/predict" method="post" class="mt-4">
+                
+                <div class="mb-3">
+                    <label for="customers_per_week" class="form-label">Customers Per Week:</label>
+                    <input type="number" id="customers_per_week" name="customers_per_week" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="promotion" class="form-label">Promotion (0 or 1):</label>
+                    <input type="number" id="promotion" name="promotion" min="0" max="1" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="weather" class="form-label">Weather:</label>
+                    <select id="weather" name="weather" class="form-select" required>
+                        <option value="sunny">Sunny</option>
+                        <option value="rainy">Rainy</option>
+                        <option value="cloudy">Cloudy</option>
+                        <option value="snowy">Snowy</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="events" class="form-label">Events (0 or 1):</label>
+                    <input type="number" id="events" name="events" min="0" max="1" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="holiday" class="form-label">Holiday (0 or 1):</label>
+                    <input type="number" id="holiday" name="holiday" min="0" max="1" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="day_of_week" class="form-label">Day of Week:</label>
+                    <select id="day_of_week" name="day_of_week" class="form-select" required>
+                        <option value="Monday">Monday</option>
+                        <option value="Tuesday">Tuesday</option>
+                        <option value="Wednesday">Wednesday</option>
+                        <option value="Thursday">Thursday</option>
+                        <option value="Friday">Friday</option>
+                        <option value="Saturday">Saturday</option>
+                        <option value="Sunday">Sunday</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="temperature" class="form-label">Temperature:</label>
+                    <input type="number" id="temperature" name="temperature" step="0.1" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="restaurant_rating" class="form-label">Restaurant Rating (1-5):</label>
+                    <input type="number" id="restaurant_rating" name="restaurant_rating" step="0.1" min="1" max="5" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="special_promotion" class="form-label">Special Promotion (0 or 1):</label>
+                    <input type="number" id="special_promotion" name="special_promotion" min="0" max="1" class="form-control" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">Predict</button>
+            </form>
+        </div>
+
+        {% if prediction_text %}
+        <div class="alert alert-success mt-4 text-center">{{ prediction_text }}</div>
+        {% endif %}
+
+        {% if img_path %}
+        <div class="text-center mt-4">
+            <h3 class="text-secondary">Visualization:</h3>
+            <img src="{{ img_path }}" alt="Prediction Chart" class="img-fluid mt-2 rounded shadow">
+        </div>
+        {% endif %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

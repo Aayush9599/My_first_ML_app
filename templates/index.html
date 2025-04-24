@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict Poultry Consumption</title>
+</head>
+<body>
+    <h1>Predict Poultry Consumption</h1>
+    <form action="/predict" method="post">
+        <label for="customers_per_week">Customers Per Week:</label>
+        <input type="number" id="customers_per_week" name="customers_per_week" required><br><br>
+
+        <label for="promotion">Promotion (0 or 1):</label>
+        <input type="number" id="promotion" name="promotion" min="0" max="1" required><br><br>
+
+        <label for="weather">Weather:</label>
+        <select id="weather" name="weather" required>
+            <option value="sunny">Sunny</option>
+            <option value="rainy">Rainy</option>
+            <option value="cloudy">Cloudy</option>
+            <option value="snowy">Snowy</option>
+        </select><br><br>
+
+        <label for="events">Events (0 or 1):</label>
+        <input type="number" id="events" name="events" min="0" max="1" required><br><br>
+
+        <label for="holiday">Holiday (0 or 1):</label>
+        <input type="number" id="holiday" name="holiday" min="0" max="1" required><br><br>
+
+        <label for="day_of_week">Day of Week:</label>
+        <select id="day_of_week" name="day_of_week" required>
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday">Friday</option>
+            <option value="Saturday">Saturday</option>
+            <option value="Sunday">Sunday</option>
+        </select><br><br>
+
+        <label for="temperature">Temperature:</label>
+        <input type="number" id="temperature" name="temperature" step="0.1" required><br><br>
+
+        <label for="restaurant_rating">Restaurant Rating (1-5):</label>
+        <input type="number" id="restaurant_rating" name="restaurant_rating" step="0.1" min="1" max="5" required><br><br>
+
+        <label for="special_promotion">Special Promotion (0 or 1):</label>
+        <input type="number" id="special_promotion" name="special_promotion" min="0" max="1" required><br><br>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction_text %}
+        <h2>{{ prediction_text }}</h2>
+    {% endif %}
+
+    {% if img_path %}
+    <h3>Visualization:</h3>
+    <img src="{{ img_path }}" alt="Prediction Chart">
+    {% endif %}
+
+</body>
+</html>

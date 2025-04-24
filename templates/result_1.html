@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            text-align: center;
+            padding: 40px;
+        }
+        .container {
+            max-width: 600px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background: #007bff;
+            color: white;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+        img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">Prediction Results</h1>
+        <ul>
+            <li>🐔 Chicken Consumption (kg): {{ prediction['Chicken Consumption (kg)'] }}</li>
+            <li>🐄 Beef Consumption (kg): {{ prediction['Beef Consumption (kg)'] }}</li>
+            <li>🐟 Fish Consumption (kg): {{ prediction['Fish Consumption (kg)'] }}</li>
+            <li>🐖 Pork Consumption (kg): {{ prediction['Pork Consumption (kg)'] }}</li>
+        </ul>
+
+        {% if img_path %}
+        <h3 class="mt-4">Visualization:</h3>
+        <img src="{{ img_path }}" alt="Prediction Chart" class="img-fluid">
+        {% endif %}
+
+        <br><br>
+        <a href="/" class="btn btn-primary">Go Back</a>
+    </div>
+</body>
+</html>
